@@ -1,6 +1,24 @@
 # Export iFit workouts to Garmin Connect
 
+This is a web application which sync your iFit workouts to your Garmin Connect account.
+
+### Deploy for free to Heroku:
+
+You can run this app for free on Heroku.
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Make sure to define the following variables once you've created your account:
+
+    export IFIT_USER = xxx
+    export IFIT_PASS = xxx
+    export GARMIN_USER = xxx
+    export GARMIN_PASS = xxx
+
+Next, set up the *Scheduler* and create a new job `curl https://YOUR-APP-NAME.herokuapp.com/workouts/export`.  Make sure to replace `YOUR-APP-NAME`.
+This will make sure it syncs daily/hourly automatically for you.
+
+### Development
 
 Software:
 
