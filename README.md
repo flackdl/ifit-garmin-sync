@@ -11,7 +11,7 @@ Install
 
     python3 -mvenv ~/.envs/ifit-sync
     activate ~/.envs/ifit-sync/bin/activate
-    pip install -r src/requirements.txt
+    pip install -r requirements.txt
 
 Configure
 
