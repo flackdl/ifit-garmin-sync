@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from sync.views import IfitWorkoutsView
+from sync.views import IfitWorkoutsExportView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('workouts/', IfitWorkoutsView.as_view()),
+    path('workouts/', IfitWorkoutsExportView.as_view()),
+    path('workouts/export', IfitWorkoutsExportView.as_view(export=True)),
 ]

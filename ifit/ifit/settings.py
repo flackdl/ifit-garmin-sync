@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+d@$j(3m8ryu!adlrzc0cc69ty^j(&w2zdp@^446mcz2f_e&z2'
+SECRET_KEY = os.environ.get('SECRET_KEY', '+d@$j(3m8ryu!adlrzc0cc69ty^j(&w2zdp@^446mcz2f_e&z2')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -144,3 +144,6 @@ LOGGING = {
 
 IFIT_USER = os.environ.get('IFIT_USER')
 IFIT_PASS = os.environ.get('IFIT_PASS')
+
+GARMIN_USER = os.environ.get('GARMIN_USER')
+GARMIN_PASS = os.environ.get('GARMIN_PASS')
