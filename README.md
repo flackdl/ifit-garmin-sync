@@ -1,5 +1,7 @@
 # Export iFit workouts to Garmin Connect
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 Software:
 
 - python 3 

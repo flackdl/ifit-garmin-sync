@@ -1,0 +1,6 @@
+{
+  "name": "Sync iFit workouts to Garmin Connect",
+  "description": "Web application to sync your iFit workouts to Garmin Connect",
+  "repository": "https://github.com/flackdl/ifit-garmin-sync",
+  "keywords": ["ifit", "garmin", "garmin-connect"]
+}
