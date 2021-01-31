@@ -4,3 +4,4 @@ lxml==4.6.2
 bpython==0.21
 # garmin uploader
 git+https://github.com/La0/garmin-uploader@5378af05ee5db28351d408b08e54c15f5123f673
+gunicorn==20.0.4

@@ -11,7 +11,7 @@ Install
 
     python3 -mvenv ~/.envs/ifit-sync
     activate ~/.envs/ifit-sync/bin/activate
-    pip install -r ifit/requirements.txt
+    pip install -r src/requirements.txt
 
 Configure
 
@@ -23,7 +23,7 @@ Configure
 Run
 
     activate ~/.envs/ifit-sync/bin/activate
-    python ifit/manage.py migrate
-    python ifit/manage.py runserver
+    python src/manage.py migrate
+    python src/manage.py runserver
 
-Visiting http://127.0.0.1:8000/workouts/export will export your iFit workouts to Garmin Connect.
+Visiting http://127.0.0.1:8000/workouts/export will export your iFit workouts to your Garmin Connect account.
