@@ -11,6 +11,24 @@
     },
     "heroku-postgresql"
   ],
+  "env": {
+    "IFIT_USER": {
+      "description": "iFit username"
+    },
+    "IFIT_PASS": {
+      "description": "iFit password"
+    },
+    "GARMIN_USER": {
+      "description": "Garmin username"
+    },
+    "GARMIN_PASS": {
+      "description": "Garmin password"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of processes to run.",
+      "value": "5"
+    }
+  },
   "formation": {
     "web": {
       "quantity": 1,
