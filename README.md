@@ -17,7 +17,7 @@ Make sure to define the following [Config Vars](https://devcenter.heroku.com/art
     GARMIN_USER = xxx
     GARMIN_PASS = xxx
 
-Swap *YOUR-APP-NAME* with your new heroku app and visit: https://YOUR-APP-NAME.herokuapp.com/
+Swap *YOUR-IFIT-APP-NAME* with your new heroku app and visit: https://YOUR-IFIT-APP-NAME.herokuapp.com/
 
 ### Development
 
