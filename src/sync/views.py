@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
@@ -21,4 +20,4 @@ class HomeView(View):
 class ExportView(View):
     def get(self, request):
         sync.delay()
-        return HttpResponse('Successfully queued sync task')
+        return render(request, 'queue.html')

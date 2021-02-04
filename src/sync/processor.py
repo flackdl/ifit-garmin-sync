@@ -4,6 +4,7 @@ import logging
 import requests
 from datetime import datetime
 
+from django.db import IntegrityError
 from django.utils.dateparse import parse_datetime
 from garmin_uploader.user import User
 from garmin_uploader.workflow import Activity
@@ -78,12 +79,18 @@ class SyncProcessor:
             activity = Activity(path=path, name=title)
             activity.upload(user)
             titles.append(title)
-            Workout.objects.create(
-                name=title,
-                date_created=parse_datetime(date[0]) if date else datetime.now(),
-            )
+            try:
+                Workout.objects.create(
+                    name=title,
+                    date_created=parse_datetime(date[0]) if date else datetime.now(),
+                )
+            except IntegrityError:
+                logging.info('skipping already-synced workout')
+                continue
+
         logging.info('imported:')
         logging.info(titles)
+
         return titles
 
     def _cache_cookies(self, cookies) -> None:

@@ -10,14 +10,14 @@ You can run this app for free on Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Make sure to define the following [Config Vars](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard) in Heroku's *Settings* once you've created your account:
+You'll be required to enter the following during the installation in Heroku:
 
-    IFIT_USER = xxx
-    IFIT_PASS = xxx
-    GARMIN_USER = xxx
-    GARMIN_PASS = xxx
+- IFIT_USER
+- IFIT_PASS
+- GARMIN_USER
+- GARMIN_PASS
 
-Swap *YOUR-IFIT-APP-NAME* with your new heroku app and visit: https://YOUR-IFIT-APP-NAME.herokuapp.com/
+Swap *YOUR-IFIT-APP-NAME* with your new heroku app name and then visit: https://YOUR-IFIT-APP-NAME.herokuapp.com/
 
 ### Development
 
