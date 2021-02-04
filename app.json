@@ -10,5 +10,15 @@
       "as": "redis"
     },
     "heroku-postgresql"
-  ]
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "hobby-dev"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "hobby-dev"
+    }
+  }
 }
