@@ -43,49 +43,55 @@ class SyncProcessor:
             self.message = 'failed getting workouts'
             return False
 
-        response = {'workouts': workout_urls}
-
         paths_exported = self._export(workout_urls)
-        paths_imported = self._import(paths_exported)
-        response.update(
-            {'imported': paths_imported, 'exported': paths_exported})
+        self._import(paths_exported)
 
         return True
 
     def _export(self, workout_urls: list):
-        paths = []
+        workouts = []
         for url in workout_urls:
             workout_id = os.path.basename(url)
+            if Workout.objects.filter(ifit_id=workout_id).exists():
+                logging.info('skipping workout {} that has already been synced'.format(workout_id))
+                continue
             response = self.session.get(os.path.join(IFIT_URL_EXPORT_WORKOUT, workout_id))
             logging.info(response.url)
             with tempfile.NamedTemporaryFile('w', delete=False, suffix='.tcx') as fd:
                 fd.write(response.text)
-                paths.append(fd.name)
+                workouts.append({
+                    'path': fd.name,
+                    'id': workout_id,
+                })
         logging.info('exported:')
-        logging.info(paths)
-        return paths
+        logging.info(workouts)
+        return workouts
 
-    def _import(self, paths: list):
+    def _import(self, workouts: list):
+        if not workouts:
+            return []
         titles = []
         user = User(username=settings.GARMIN_USER, password=settings.GARMIN_PASS)
         user.authenticate()
         namespaces = {'ns': 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2'}
         # save logs for imported workouts
-        for path in paths:
-            tree = etree.parse(path)
+        for workout in workouts:
+            tree = etree.parse(workout['path'])
             notes = tree.xpath('//ns:Activity/ns:Notes/text()', namespaces=namespaces)
             date = tree.xpath('//ns:Activity/ns:Id/text()', namespaces=namespaces)
             title = notes[0] if notes else 'Unknown Upload: {}'.format(datetime.now().isoformat())
-            activity = Activity(path=path, name=title)
+            activity = Activity(path=workout['path'], name=title)
             activity.upload(user)
             titles.append(title)
             try:
                 Workout.objects.create(
+                    ifit_id=workout['id'],
                     name=title,
                     date_created=parse_datetime(date[0]) if date else datetime.now(),
                 )
-            except IntegrityError:
-                logging.info('skipping already-synced workout')
+            except IntegrityError as e:
+                logging.exception('skipping sync that generated an unknown database error')
+                logging.error(str(e))
                 continue
 
         logging.info('imported:')
