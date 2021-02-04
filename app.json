@@ -5,7 +5,10 @@
   "keywords": ["ifit", "garmin", "garmin-connect", "strava"],
   "addons": [
     "scheduler",
-    "heroku-redis",
+    {
+      "plan": "heroku-redis:hobby-dev",
+      "as": "redis"
+    },
     "heroku-postgresql"
   ]
 }
