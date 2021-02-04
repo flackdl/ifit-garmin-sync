@@ -14,6 +14,9 @@
 			<a href="{% url 'export-workouts' %}">Queue sync</a>
 		</div>
 	</div>
+	{% if missing_settings %}
+		<div class="alert alert-danger">You're missing some or all required settings: IFIT_USER, IFIT_PASS, GARMIN_USER, GARMIN_PASS</div>
+	{% endif %}
 	{% if workouts %}
 		<table class="table">
 			<tr>

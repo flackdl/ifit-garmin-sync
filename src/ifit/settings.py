@@ -151,12 +151,8 @@ except ValueError:
 
 # ifit credentials
 IFIT_USER = os.environ.get('IFIT_USER')
-assert IFIT_USER, 'missing IFIT_USER environment variable'
 IFIT_PASS = os.environ.get('IFIT_PASS')
-assert IFIT_PASS, 'missing IFIT_PASS environment variable'
 
 # garmin credentials
 GARMIN_USER = os.environ.get('GARMIN_USER')
-assert GARMIN_USER, 'missing GARMIN_USER environment variable'
 GARMIN_PASS = os.environ.get('GARMIN_PASS')
-assert GARMIN_PASS, 'missing GARMIN_PASS environment variable'
