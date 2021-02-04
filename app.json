@@ -5,7 +5,7 @@
   "keywords": ["ifit", "garmin", "garmin-connect", "strava"],
   "addons": [
     "scheduler",
-    "heroku-redis",
+    "openredis",
     "heroku-postgresql"
   ]
 }
