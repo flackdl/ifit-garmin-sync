@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+
+  postgres:
+    image: postgres:12-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ifit-postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  redis:
+    image: redis:5
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  ifit-postgresql:

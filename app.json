@@ -2,8 +2,10 @@
   "name": "Sync iFit workouts to Garmin Connect",
   "description": "Web application to sync your iFit workouts to your Garmin Connect account",
   "repository": "https://github.com/flackdl/ifit-garmin-sync",
-  "keywords": ["ifit", "garmin", "garmin-connect"],
+  "keywords": ["ifit", "garmin", "garmin-connect", "strava"],
   "addons": [
-    "scheduler"
+    "scheduler",
+    "heroku-redis",
+    "heroku-postgresql"
   ]
 }

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,10 +77,7 @@ WSGI_APPLICATION = 'ifit.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))),
 }
 
 
@@ -143,8 +141,22 @@ LOGGING = {
     },
 }
 
-IFIT_USER = os.environ.get('IFIT_USER')
-IFIT_PASS = os.environ.get('IFIT_PASS')
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost//')
 
+# how often to sync
+try:
+    SYNC_HOURS = int(os.environ.get('SYNC_HOURS', 4))
+except ValueError:
+    SYNC_HOURS = 4
+
+# ifit credentials
+IFIT_USER = os.environ.get('IFIT_USER')
+assert IFIT_USER, 'missing IFIT_USER environment variable'
+IFIT_PASS = os.environ.get('IFIT_PASS')
+assert IFIT_PASS, 'missing IFIT_PASS environment variable'
+
+# garmin credentials
 GARMIN_USER = os.environ.get('GARMIN_USER')
+assert GARMIN_USER, 'missing GARMIN_USER environment variable'
 GARMIN_PASS = os.environ.get('GARMIN_PASS')
+assert GARMIN_PASS, 'missing GARMIN_PASS environment variable'

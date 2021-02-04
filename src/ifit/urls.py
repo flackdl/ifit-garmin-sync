@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from sync.views import IfitWorkoutsExportView
+from django.urls import path, reverse_lazy
+from django.views.generic import RedirectView
+
+from sync.views import HomeView, ExportView
+
 
 urlpatterns = [
+    path('', HomeView.as_view()),
     path('admin/', admin.site.urls),
-    path('workouts/', IfitWorkoutsExportView.as_view()),
-    path('workouts/export', IfitWorkoutsExportView.as_view(export=True)),
+    path('workouts/', RedirectView.as_view(url=reverse_lazy('export-workouts'))),
+    path('workouts/export', ExportView.as_view(), name='export-workouts'),
 ]

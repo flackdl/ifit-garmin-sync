@@ -1,8 +1,8 @@
 from django.contrib import admin
-#from sync.models import Settings
+from sync.models import Workout
 
 
-#@admin.register(Settings)
-#class SettingsAdmin(admin.ModelAdmin):
-#    pass
+@admin.register(Workout)
+class SettingsAdmin(admin.ModelAdmin):
+    pass
 
