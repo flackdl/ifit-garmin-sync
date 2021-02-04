@@ -23,10 +23,6 @@
     },
     "GARMIN_PASS": {
       "description": "Garmin password"
-    },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
-      "value": "5"
     }
   },
   "formation": {
