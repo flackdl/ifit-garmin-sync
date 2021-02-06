@@ -17,7 +17,16 @@ You'll be required to define the following variables during the installation in 
 - *GARMIN_USER*
 - *GARMIN_PASS*
 
-Swap **YOUR-IFIT-APP-NAME** with your new heroku app name and then visit: https://YOUR-IFIT-APP-NAME.herokuapp.com/
+##### Schedule syncs
+
+The free apps on Heroku automatically sleep after 30 minutes of inactivity, so, to automatically sync your workouts,
+you'll need to schedule a recurring job to sync your workouts.  Set up a *Heroku Scheduler* job and create a new recurring job like the following:
+
+    curl https://YOUR-APP-NAME.herokuapp.com/workouts/export
+
+**Make sure to replace `YOUR-APP-NAME`.** with your heroku app name.
+
+This will make sure it syncs daily/hourly automatically for you.
 
 ### Development
 

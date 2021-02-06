@@ -21721,8 +21721,8 @@
             <Version>
                 <VersionMajor>21</VersionMajor>
                 <VersionMinor>02</VersionMinor>
-                <BuildMajor>04</BuildMajor>
-                <BuildMinor>00</BuildMinor>
+                <BuildMajor>05</BuildMajor>
+                <BuildMinor>17</BuildMinor>
             </Version>
         </Build>
         <LangID>EN</LangID>
