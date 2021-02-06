@@ -24,7 +24,7 @@ you'll need to schedule a recurring job to sync your workouts.  Set up a *Heroku
 
     curl https://YOUR-APP-NAME.herokuapp.com/workouts/export
 
-**Make sure to replace `YOUR-APP-NAME`** with your heroku app name.
+**Make sure to replace `YOUR-APP-NAME` with your heroku app name.**
 
 This will make sure it syncs daily/hourly automatically for you.
 
