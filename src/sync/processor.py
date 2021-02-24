@@ -72,7 +72,9 @@ class SyncProcessor:
             return []
         titles = []
         user = User(username=settings.GARMIN_USER, password=settings.GARMIN_PASS)
-        user.authenticate()
+        if not user.authenticate():
+            logging.error('could not authenticate with garmin')
+            raise Exception('could not authenticate with garmin')
         namespaces = {'ns': 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2'}
         # save logs for imported workouts
         for workout in workouts:
