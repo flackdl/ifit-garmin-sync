@@ -4,7 +4,7 @@ from sync.celery import app
 
 app.conf.beat_schedule = {
     'sync': {
-        'task': 'tasks.sync',
+        'task': 'sync.tasks.sync',
         'schedule': 60 * 60 * settings.SYNC_HOURS,
     },
 }
