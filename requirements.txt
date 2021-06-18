@@ -3,7 +3,8 @@ requests==2.25.1
 lxml==4.6.2
 bpython==0.21
 # garmin uploader - this is a hot fix auth version from 2/24/21
-https://github.com/La0/garmin-uploader/archive/fix-22.zip
+#https://github.com/La0/garmin-uploader/archive/fix-22.zip
+https://github.com/La0/garmin-uploader/archive/fix-cloudfare-errors.zip
 gunicorn==20.0.4
 celery[redis]==5.0.5
 dj-database-url==0.5.0
