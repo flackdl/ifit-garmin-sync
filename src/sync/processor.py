@@ -78,6 +78,7 @@ class SyncProcessor:
         namespaces = {'ns': 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2'}
         # save logs for imported workouts
         for workout in workouts:
+            # TODO - set <Activity Sport="">  Other|Running|Biking
             tree = etree.parse(workout['path'])
             notes = tree.xpath('//ns:Activity/ns:Notes/text()', namespaces=namespaces)
             date = tree.xpath('//ns:Activity/ns:Id/text()', namespaces=namespaces)

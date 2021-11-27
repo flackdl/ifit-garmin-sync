@@ -1,10 +1,9 @@
-Django==3.1.5
-requests==2.25.1
-lxml==4.6.2
 bpython==0.21
-# garmin uploader - this is a release to fix garmin auth issues that began ~5/2021
-garmin-uploader==1.0.10
-gunicorn==20.0.4
 celery[redis]==5.0.5
 dj-database-url==0.5.0
+Django==3.1.5
+garmin-uploader==1.0.10
+gunicorn==20.0.4
+lxml==4.6.2
 psycopg2==2.8.6
+requests==2.25.1
