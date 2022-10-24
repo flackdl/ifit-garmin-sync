@@ -6,9 +6,9 @@ It runs a scheduled background task to run every few hours.
 
 ## Run
 
-You'll need *docker* and *docker-compose* installed to run everything. 
+You'll need **docker** and **docker-compose** installed to run everything. 
 
-You'll be required to define the following variables in `env`:
+You'll be required to define the following variables in the file `env`:
 
 - *IFIT_USER*
 - *IFIT_PASS*
@@ -25,7 +25,7 @@ Populate the environment variables in `env` then start up everything with:
 
 You should now be able to access the dashboard at http://localhost:8080.
 
-Sync tasks run automatically every few hours (configurable in `SYNC_HOURS` env var).
+Sync tasks run automatically every few hours (configurable in `SYNC_HOURS` env var) but you can force the task in the dashboard as well.
 
 ### Development
 
