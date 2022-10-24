@@ -4,29 +4,28 @@ This is a web application which syncs your iFit workouts to your Garmin Connect 
 
 It runs a scheduled background task to run every few hours.
 
-### Deploy for free to Heroku:
+## Run
 
-You can run this app for free on Heroku.
+You'll need *docker* and *docker-compose* installed to run everything. 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-You'll be required to define the following variables during the installation in Heroku:
+You'll be required to define the following variables in `env`:
 
 - *IFIT_USER*
 - *IFIT_PASS*
 - *GARMIN_USER*
 - *GARMIN_PASS*
 
-##### Schedule syncs
+Copy the `env.template file` to `env`:
+    
+    cp env.template env
 
-The free apps on Heroku automatically sleep after 30 minutes of inactivity, so, to automatically sync your workouts,
-you'll need to schedule a recurring job to sync your workouts.  Set up a *Heroku Scheduler* job and create a new recurring job like the following:
+Populate the environment variables in `env` then start up everything with:
 
-    curl https://YOUR-APP-NAME.herokuapp.com/workouts/export
+    docker-compose up -d --build
 
-**Make sure to replace `YOUR-APP-NAME` with your heroku app name.**
+You should now be able to access the dashboard at http://localhost:8080.
 
-This will make sure it syncs daily/hourly automatically for you.
+Sync tasks run automatically every few hours (configurable in `SYNC_HOURS` env var).
 
 ### Development
 

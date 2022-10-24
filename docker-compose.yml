@@ -1,6 +1,34 @@
 version: '2'
 
 services:
+  ifit:
+    build: .
+    ports:
+      - "8080:80"
+    restart: always
+    env_file:
+      - env
+    environment:
+      # https://github.com/kennethreitz/dj-database-url
+      DATABASE_URL: "postgres://postgres:postgres@postgres/postgres"
+      REDIS_URL: "redis://redis"
+    depends_on:
+      - redis
+      - postgres
+
+  celery:
+    build: .
+    restart: always
+    env_file:
+      - env
+    entrypoint: celery -A sync worker --beat --loglevel INFO
+    environment:
+      # https://github.com/kennethreitz/dj-database-url
+      DATABASE_URL: "postgres://postgres:postgres@postgres/postgres"
+      REDIS_URL: "redis://redis"
+    depends_on:
+      - redis
+      - postgres
 
   postgres:
     image: postgres:12-alpine
