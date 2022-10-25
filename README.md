@@ -8,18 +8,18 @@ It runs a scheduled background task to run every few hours.
 
 You'll need **docker** and **docker-compose** installed to run everything. 
 
-You'll be required to define the following variables in the file `env`:
+You'll be required to define the following variables in the file `.env`:
 
 - *IFIT_USER*
 - *IFIT_PASS*
 - *GARMIN_USER*
 - *GARMIN_PASS*
 
-Copy the `env.template file` to `env`:
+Copy the `env.template file` to `.env`:
     
-    cp env.template env
+    cp env.template .env
 
-Populate the environment variables in `env` then start up everything with:
+Populate the environment variables in `.env` then start up everything with:
 
     docker-compose up -d --build
 

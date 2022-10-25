@@ -6,9 +6,11 @@ services:
     ports:
       - "8080:80"
     restart: always
-    env_file:
-      - env
     environment:
+      IFIT_USER: ${IFIT_USER}
+      IFIT_PASS: ${IFIT_PASS}
+      GARMIN_USER: ${GARMIN_USER}
+      GARMIN_PASS: ${GARMIN_PASS}
       # https://github.com/kennethreitz/dj-database-url
       DATABASE_URL: "postgres://postgres:postgres@postgres/postgres"
       REDIS_URL: "redis://redis"
@@ -19,10 +21,12 @@ services:
   celery:
     build: .
     restart: always
-    env_file:
-      - env
     entrypoint: celery -A sync worker --beat --loglevel INFO
     environment:
+      IFIT_USER: ${IFIT_USER}
+      IFIT_PASS: ${IFIT_PASS}
+      GARMIN_USER: ${GARMIN_USER}
+      GARMIN_PASS: ${GARMIN_PASS}
       # https://github.com/kennethreitz/dj-database-url
       DATABASE_URL: "postgres://postgres:postgres@postgres/postgres"
       REDIS_URL: "redis://redis"
